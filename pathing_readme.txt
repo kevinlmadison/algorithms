@@ -1,0 +1,5 @@
+-IMPORTANT! The indices used are based on matrices i.e. Row x Column and thus starts from the top left and moves down and to the right.
+-Uses a dynamic programming approach. (matrix chain multiplication)
+-Works from the bottom up. (it works correctly with the given examples but the grid produced may appear backwards as this is how matrix chain multiplication is implemented) 
+-Does not check for cycles. (We're going to assume that the rule about only moving forward also applies to jumps)
+-If I were to really flesh out this project I would address infinite loops (cycles) and likely use a graph approach. We would need to test for cycles but also test to see if those cycles are reachable from the start point given the same rules about only moving forward along a path.
