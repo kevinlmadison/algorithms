@@ -21,7 +21,6 @@ def str_to_int(s):
                     s[s[0] == '-':], 0) * (-1 if s[0] == '-' else 1)
 
 # This function converts an int to a string.
-
 def int_to_str(i):
     # We need to save the sign of the number so that we can operate
     # on its absolute value.
@@ -42,9 +41,19 @@ def int_to_str(i):
     # re-apply the sign if needed.
     return ('-' if is_negative else '') + ''.join(reversed(s)) 
 
+# This function takes a numeric string with base b1 and converts it to base b2
+def convert_base(num_as_string, b1, b2):
+    def construct_from_base(num_as_int, base):
+        return ('' if num_as_int == 0 else
+                construct_from_base(num_as_int // base, base)
+                + string.hexdigits[num_as_int % base].upper())
 
-def base_conversion(s, b1, b2):
-    pass
+    is_negative = num_as_string[0] == '-'
+    num_as_int = reduce(lambda x, c: x * b1 + string.hexdigits.index(c.lower()),
+            num_as_string[is_negative:], 0)
+
+    return ('-' if is_negative else '') + ('0' if num_as_int == 0 else
+                                            construct_from_base(num_as_int, b2))
 
 # This is the main function for testing these nice functions.
 if __name__ == '__main__':
